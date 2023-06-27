@@ -3,4 +3,5 @@ env/
 .env
 .vend
 
-*__pycache__/
+*__pycache__
+backend/db.sqlite3
