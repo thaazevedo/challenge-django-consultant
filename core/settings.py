@@ -1,14 +1,10 @@
 from pathlib import Path
-import environ, os
-
-env = environ.Env()
-environ.Env.read_env()
-
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_URL = env('BASE_URL')
+BASE_URL = 'http://localhost:8000'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -21,7 +17,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost' ,'127.0.0.1']
 
-CORS_ORIGIN_ALLOW_ALL = env.bool('CORS_ORIGIN_ALLOW_ALL', default = False)
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -130,5 +126,5 @@ CELERY_TIMEZONE          = 'America/Sao_Paulo'
 CELERY_TASK_SERIALIZER   = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_ACCEPT_CONTENT    = ['application/json']
-CELERY_BROKER_URL        = 'redis://localhost:6379'
+CELERY_BROKER_URL        = 'redis://redis:6379'
 CELERY_RESULT_BACKEND    = 'django-db'
