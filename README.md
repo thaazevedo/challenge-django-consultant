@@ -4,7 +4,7 @@
 ## Inicializando o projeto usando Docker:
 
 - O primeiro passo é realizar o clone deste repositótio.
-- Após isso, faça do Download do [Docker](https://www.docker.com/products/docker-desktop/), segundo seu sistema operacional.
+- Após isso, faça do Download do [Docker](https://www.docker.com/products/docker-desktop/), segundo seu sistema operacional e inicialize.
 - Por meio do CMD/Terminal de Comando entre na pasta principal
 ``
 loans-for-good-challenge
