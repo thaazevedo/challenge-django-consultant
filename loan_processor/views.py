@@ -10,36 +10,34 @@ from propostas.models.form_propostas import FormProposta
 
 from propostas.tasks import processor_proposta
 
+# Parte responsável pela anaviação da proposta
+## na API de avaliação automática:
 @api_view(['POST'])
 def send_proposta_processor(request):
-  print(request.data)
+
+  # Recebendo informações do formulários
   document = request.data['document']
   name = request.data['name']
   id = request.data['id']
   
+  # Fetch API
   result = processor_proposta(document, name)
-  print(result)
   json_result = json.loads(result)
 
+  # De acordo com o retorno da API, preencha os dados
   state='False'
-  needs_human_approval = False
   if json_result["approved"]:
     state='Human Approval'
-    needs_human_approval=True
-  # else:
-    # state = "False"
-    # needs_human_approval=False
-  print(state)
+
+  # Considerando as informações, pegue o formulário correspondente
+  ## à proposta e crie a mesma
   form = FormProposta.objects.get(id=id)
-  print(form)
   Proposta.objects.create(
     form_proposta=form,
     documentos=document,
     status=state,
     needs_human_approval=json_result["approved"]
   )
-  print(state)
+
   context = {"status": state}
-  print(context)
-  # return Response(request, context)
   return Response(context)

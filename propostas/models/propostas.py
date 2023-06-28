@@ -22,27 +22,4 @@ class Proposta(models.Model):
   updated_at  = models.DateTimeField(auto_now=True)
 
   def __str__(self):
-    # return self.status
-    status = "Human Approval"
-    if self.status == "True":
-      status = "Aprovada"
-    elif self.status == "False":
-      status = "Negada"
-
-    if self.needs_human_approval and self.status == "Human Approval":
-      return "Avaliação humana necessária!"
-    elif self.needs_human_approval and self.status != "Human Approval":
-      return "Avaliação humana realizada: " + status
-    else:
-      return "Negada automaticamente"
-
-  # def save(self, *args, **kwargs):
-  #   if not self.needs_human_approval:
-  #     self.status = "False"
-  #   super(Proposta, self).save(*args, **kwargs)
-
-# @receiver(post_save, sender=Proposta)
-# def proposal_post_save(sender, instance, created, **kwargs):
-#     if not instance.needs_human_approval:
-#       instance.status = "False"
-#       instance.save()
+    return self.status

@@ -5,19 +5,24 @@ from django.shortcuts import render, redirect
 from propostas.models.form_propostas import FormProposta
 from django.conf import settings
 
+# Ao entrar na home do django, redireciona o user
+## para a página de criar proposta
 def home(request):
   return redirect('create_proposta')
 
-
+# Pega o formulário da proposta para preenhimento dos
+## campos necessários à proposta
 def get_form_proposta(request):
 
   if FormProposta.objects.all().count() == 0:
     return HttpResponse({"Não existem formulários definidos!"})
 
   base_url = getattr(settings, "BASE_URL")
-  print(base_url)
+
   tipo_campos = []
   proposta = None
+  # Tratamento caso o ADMIN defina mais de um formulário com
+  ## padrão, ele pega o último:
   try:
     try: 
       proposta = FormProposta.objects.get(default=True)

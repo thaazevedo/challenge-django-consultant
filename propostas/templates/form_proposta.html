@@ -183,6 +183,7 @@
       })
 
       nova_proposta.addEventListener('click', (e) => {
+        form_proposta.reset()
         form_proposta.classList.remove("d-none")
         proposta_negada.classList.add("d-none")
         loader.classList.add("d-none")

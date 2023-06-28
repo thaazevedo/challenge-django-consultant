@@ -43,6 +43,6 @@ admin.site.register(FormProposta, FormPropostaAdmin)
 
 class PropostaAdmin(admin.ModelAdmin):
   readonly_fields = ("needs_human_approval",)
-  list_display = ('needs_human_approval', 'status', 'created_at')
+  list_display = ('status', 'needs_human_approval', 'created_at')
   list_filter = ("status",)
 admin.site.register(Proposta, PropostaAdmin)
