@@ -1,5 +1,4 @@
 # challenge-django-consultant
-- Produção do Teste Técnico para Consultor Django DigitalSys. O projeto consiste na criação de uma plataforma de empréstimo para a empresa Loans For Good (LFG).
 
 ## Inicializando o projeto usando Docker:
 
